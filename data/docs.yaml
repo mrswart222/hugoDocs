@@ -926,6 +926,36 @@ chroma:
     - zig
     Name: Zig
 config:
+  HTTPCache:
+    caching:
+      for:
+        excludes:
+        - '**{.jpg,.jpeg,.png,.webp,.gif,.ttf}'
+        includes:
+        - '**'
+    polls:
+    - disable: true
+      for:
+        excludes: null
+        includes:
+        - '**{.jpg,.jpeg,.png,.webp,.gif,.ttf}'
+      high: 0s
+      low: 0s
+    - disable: false
+      for:
+        excludes: null
+        includes:
+        - https://*.github.com/**
+        - https://*.twitter.com/**
+      high: 30m0s
+      low: 10m0s
+    - disable: false
+      for:
+        excludes: null
+        includes:
+        - '**'
+      high: 30s
+      low: 1s
   archeTypeDir: archetypes
   assetDir: assets
   author: {}
@@ -939,6 +969,7 @@ config:
     cacheBusters:
     - source: (postcss|tailwind)\.config\.js
       target: (css|styles|scss|sass)
+    duplicateResourceFiles: false
     noJSConfigInAssets: false
     useResourceCacheWhen: fallback
   buildDrafts: false
@@ -1720,6 +1751,8 @@ config_helpers:
     deployment:
       _merge: none
     frontmatter:
+      _merge: none
+    httpcache:
       _merge: none
     imaging:
       _merge: none
