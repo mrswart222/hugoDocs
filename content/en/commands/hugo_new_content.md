@@ -5,7 +5,7 @@ url: /commands/hugo_new_content/
 ---
 ## hugo new content
 
-Create new content for your site
+Create new content
 
 ### Synopsis
 
@@ -48,7 +48,7 @@ hugo new content [path] [flags]
       --ignoreVendorPaths string   ignores any _vendor for module paths matching the given Glob pattern
       --logLevel string            log level (debug|info|warn|error)
       --quiet                      build in quiet mode
-      --renderToMemory             render to memory (mostly useful when running the server)
+  -M, --renderToMemory             render to memory (mostly useful when running the server)
   -s, --source string              filesystem path to read files relative from
       --themesDir string           filesystem path to themes directory
   -v, --verbose                    verbose output
@@ -56,5 +56,5 @@ hugo new content [path] [flags]
 
 ### SEE ALSO
 
-* [hugo new](/commands/hugo_new/)	 - Create new content for your site
+* [hugo new](/commands/hugo_new/)	 - Create new content
 

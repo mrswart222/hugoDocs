@@ -44,6 +44,8 @@ Although we do not strictly adhere to the [Microsoft Writing Style Guide], it is
 Please link to the [glossary of terms] when necessary, and use the terms consistently throughout the documentation. Of special note:
 
 - The term "front matter" is two words unless you are referring to the configuration key
+- The term "home page" is two words
+- The term "website" is one word
 - The term "standalone" is one word, not hyphenated
 - Use the word "map" instead of "dictionary"
 - Use the word "flag" instead of "option" when referring to a command line flag
@@ -83,6 +85,24 @@ Yes → Hugo is fast.
 "It's an adverb, Sam. It's a lazy tool of a weak mind." (Outbreak, 1995).
 {{% /note %}}
 
+#### Level 6 headings
+
+Level 6 headings are styled as `dt` elements. This was implemented to support a [glossary] with linkable terms.
+
+[glossary]: /getting-started/glossary/
+
+#### Function and method descriptions
+
+When adding a page to the [functions] or [methods] section, begin the description with the word "Returns". With functions and methods that return a boolean value, begin the description with the phrase "Reports whether".
+
+For example:
+
+- `Returns the URL aliases as defined in front matter.`
+- `Reports whether the given page is in the given section.`
+
+[functions]: /functions
+[methods]: /methods
+
 #### Miscellaneous
 
 Other guidelines to consider:
@@ -94,12 +114,6 @@ Other guidelines to consider:
 - Shorter is better. If there is more than one way to do something, describe the current best practice. For example, avoid phrases such as "you can also do..." and "in older versions you had to..."
 - When including code samples, use short snippets that demonstrate the concept.
 - The Hugo user community is global; use  [basic english](https://simple.wikipedia.org/wiki/Basic_English) when possible.
-
-#### Level 6 headings
-
-Level 6 headings are styled as `dt` elements. This was implemented to support a [glossary] with linkable terms.
-
-[glossary]: /getting-started/glossary/
 
 ## Code examples
 
@@ -237,7 +251,7 @@ fm
 Use the “deprecated-in” shortcode to indicate that a feature is deprecated:
 
 ```text
-{{%/* deprecated-in 0.120.0 */%}}
+{{%/* deprecated-in 0.127.0 */%}}
 Use [`hugo.IsServer`] instead.
 
 [`hugo.IsServer`]: /functions/hugo/isserver/
@@ -246,7 +260,7 @@ Use [`hugo.IsServer`] instead.
 
 Rendered:
 
-{{% deprecated-in 0.120.0 %}}
+{{% deprecated-in 0.127.0 %}}
 Use [`hugo.IsServer`] instead.
 
 [`hugo.IsServer`]: /functions/hugo/isserver/
@@ -273,12 +287,12 @@ This is a link to the [embedded alias template].
 Use the "new-in" shortcode to indicate a new feature:
 
 ```text
-{{</* new-in 0.120.0 */>}}
+{{</* new-in 0.127.0 */>}}
 ```
 
 Rendered:
 
-{{< new-in 0.120.0 >}}
+{{< new-in 0.127.0 >}}
 
 ### note
 
@@ -308,7 +322,7 @@ Use the "new-in" shortcode to indicate a new feature:
 {{</* new-in 0.120.0 */>}}
 {{< /code >}}
 
-The "new in" label will be hidden if the specified version is older than a predefined threshold, based on differences in major and minor versions. See&nbsp;[details](https://github.com/gohugoio/hugoDocs/blob/master/layouts/shortcodes/new-in.html).
+The "new in" label will be hidden if the specified version is older than a predefined threshold, based on differences in major and minor versions. See&nbsp;[details](https://github.com/gohugoio/hugoDocs/blob/master/_vendor/github.com/gohugoio/gohugoioTheme/layouts/shortcodes/new-in.html).
 
 ## Deprecated features
 

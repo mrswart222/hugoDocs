@@ -5,11 +5,11 @@ url: /commands/hugo_deploy/
 ---
 ## hugo deploy
 
-Deploy your site to a Cloud provider.
+Deploy your site to a cloud provider
 
 ### Synopsis
 
-Deploy your site to a Cloud provider.
+Deploy your site to a cloud provider
 
 See https://gohugo.io/hosting-and-deployment/hugo-deploy/ for detailed
 documentation.
@@ -44,7 +44,7 @@ hugo deploy [flags] [args]
       --ignoreVendorPaths string   ignores any _vendor for module paths matching the given Glob pattern
       --logLevel string            log level (debug|info|warn|error)
       --quiet                      build in quiet mode
-      --renderToMemory             render to memory (mostly useful when running the server)
+  -M, --renderToMemory             render to memory (mostly useful when running the server)
   -s, --source string              filesystem path to read files relative from
       --themesDir string           filesystem path to themes directory
   -v, --verbose                    verbose output
@@ -52,5 +52,5 @@ hugo deploy [flags] [args]
 
 ### SEE ALSO
 
-* [hugo](/commands/hugo/)	 - hugo builds your site
+* [hugo](/commands/hugo/)	 - Build your site
 

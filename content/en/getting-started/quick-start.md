@@ -10,7 +10,7 @@ menu:
 weight: 20
 toc: true
 aliases: [/quickstart/,/overview/quickstart/]
-minVersion: v0.112.0
+minVersion: v0.128.0
 ---
 
 In this tutorial you will:
@@ -24,7 +24,7 @@ In this tutorial you will:
 
 Before you begin this tutorial you must:
 
-1. [Install Hugo] (extended edition, {{% param "minVersion" %}} or later)
+1. [Install Hugo] (extended or extended/deploy edition, {{% param "minVersion" %}} or later)
 1. [Install Git]
 
 You must also be comfortable working from the command line.
@@ -110,7 +110,7 @@ Press `Ctrl + C` to stop Hugo's development server.
 Add a new page to your site.
 
 ```text
-hugo new content posts/my-first-post.md
+hugo new content content/posts/my-first-post.md
 ```
 
 Hugo created the file in the `content/posts` directory. Open the file with your editor.

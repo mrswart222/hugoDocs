@@ -25,9 +25,7 @@ For example, with Microsoft Defender Antivirus:
 Then type `hugo.exe` add press the **Add** button.
 
 {{% note %}}
-Virus scanning exclusions are common, but use caution when changing these settings. See the Microsoft Defender Antivirus documentation for details.
-
-[How to add a file type or process exclusion to Windows Security](https://support.microsoft.com/en-us/topic/how-to-add-a-file-type-or-process-exclusion-to-windows-security-e524cbc2-3975-63c2-f9d1-7c2eb5331e53)
+Virus scanning exclusions are common, but use caution when changing these settings. See the [Microsoft Defender Antivirus documentation](https://support.microsoft.com/en-us/topic/how-to-add-a-file-type-or-process-exclusion-to-windows-security-e524cbc2-3975-63c2-f9d1-7c2eb5331e53) for details.
 {{% /note %}}
 
 Other virus scanners have similar exclusion mechanisms. See their respective documentation.
@@ -106,7 +104,7 @@ Hugo builds pages in parallel where multiple pages are generated simultaneously.
 Some partial templates such as sidebars or menus are executed many times during a site build. Depending on the content within the partial template and the desired output, the template may benefit from caching to reduce the number of executions. The [`partialCached`] template function provides caching capabilities for partial templates.
 
 {{% note %}}
-Note that you can create cached variants of each partial by passing additional parameters to `partialCached` beyond the initial context. See the `partialCached` documentation for more details.
+Note that you can create cached variants of each partial by passing additional arguments to `partialCached` beyond the initial context. See the `partialCached` documentation for more details.
 {{% /note %}}
 
 ## Timers

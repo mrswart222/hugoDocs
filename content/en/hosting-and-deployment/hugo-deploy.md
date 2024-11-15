@@ -1,6 +1,6 @@
 ---
 title: Hugo Deploy
-description: Upload your site to GCS, S3, or Azure
+description: Deploy your site directly to a Google Cloud Storage bucket, an AWS S3 bucket, or an Azure Storage container.
 categories: [hosting and deployment]
 keywords: [deployment,s3,gcs,azure]
 menu:
@@ -11,8 +11,13 @@ weight: 20
 toc: true
 ---
 
-You can use the "hugo deploy" command to upload your site directly to a Google Cloud Storage (GCS) bucket, an AWS S3 bucket, and/or an Azure Storage container.
+Use the `hugo deploy` command to deploy your site directly to a Google Cloud Storage bucket, an AWS S3 bucket, or an Azure Storage container
 
+{{% note %}}
+This feature requires the Hugo extended/deploy edition. See the [installation] section for details.
+
+[installation]: /installation/
+{{% /note %}}
 
 ## Assumptions
 
@@ -186,6 +191,15 @@ URL = "<FILL ME IN>"
 #include = "**.html" # would only include files with ".html" suffix
 #exclude = "**.{jpg, png}" # would exclude files with ".jpg" or ".png" suffix
 
+# Map any file named "<dir>/index.html" to the remote file "<dir>/". This does
+# not affect the root "index.html" file, and it does not affect matchers below.
+# This works when deploying to key-value cloud storage systems, such as Amazon
+# S3 (general purpose buckets, not directory buckets), Google Cloud Storage, and
+# Azure Blob Storage. This makes it so the canonical URL will match the object
+# key in cloud storage, except for the root index.html file.
+#
+#stripIndexHTML = true
+
 
 #######################
 [[deployment.matchers]] 
@@ -195,6 +209,7 @@ URL = "<FILL ME IN>"
 
 # See https://golang.org/pkg/regexp/syntax/ for pattern syntax.
 # Pattern searching is stopped on first match.
+# This is not affected by stripIndexHTML, above.
 pattern = "<FILL ME IN>"
 
 # If true, Hugo will gzip the file before uploading it to the bucket.

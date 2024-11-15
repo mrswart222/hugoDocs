@@ -33,7 +33,7 @@ hugo mod npm [command] [flags]
       --ignoreVendorPaths string   ignores any _vendor for module paths matching the given Glob pattern
       --logLevel string            log level (debug|info|warn|error)
       --quiet                      build in quiet mode
-      --renderToMemory             render to memory (mostly useful when running the server)
+  -M, --renderToMemory             render to memory (mostly useful when running the server)
   -s, --source string              filesystem path to read files relative from
       --themesDir string           filesystem path to themes directory
   -v, --verbose                    verbose output
@@ -41,6 +41,6 @@ hugo mod npm [command] [flags]
 
 ### SEE ALSO
 
-* [hugo mod](/commands/hugo_mod/)	 - Various Hugo Modules helpers.
+* [hugo mod](/commands/hugo_mod/)	 - Manage modules
 * [hugo mod npm pack](/commands/hugo_mod_npm_pack/)	 - Experimental: Prepares and writes a composite package.json file for your project.
 

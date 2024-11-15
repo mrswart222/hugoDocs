@@ -6,8 +6,8 @@ keywords: []
 menu:
   docs:
     parent: content-management
-    weight: 280
-weight: 280
+    weight: 290
+weight: 290
 toc: true
 ---
 
@@ -91,6 +91,10 @@ Returns the `Site` to which the pages will be added.
 {{ .Site.Title }}
 {{< /code >}}
 
+{{% note %}}
+Note that the `Site` returned isn't fully built when invoked from the content adapters; if you try to call methods that depends on pages, e.g. `.Site.Pages`, you will get an error saying "this method cannot be called before the site is fully initialized".
+{{% /note %}}
+
 ###### Store
 
 Returns a persistent “scratch pad” to store and manipulate data. The main use case for this is to transfer values between executions when [EnableAllLanguages](#enablealllanguages) is set. See [examples](/methods/page/store/).
@@ -125,7 +129,7 @@ Set any [front matter field] in the map passed to the [`AddPage`](#addpage) meth
 
 This table describes the fields most commonly passed to the `AddPage` method.
 
-Key|Descripion|Required
+Key|Description|Required
 :--|:--|:-:
 `content.mediaType`|The content [media type]. Default is `text/markdown`. See [content formats] for examples.|&nbsp;
 `content.value`|The content value as a string.|&nbsp;
@@ -148,7 +152,7 @@ When setting the `path`, Hugo transforms the given string to a logical path. For
 
 Construct the map passed to the [`AddResource`](#addresource) method using the fields below.
 
-Key|Descripion|Required
+Key|Description|Required
 :--|:--|:-:
 `content.mediaType`|The content [media type].|:heavy_check_mark:
 `content.value`|The content value as a string or resource.|:heavy_check_mark:
@@ -241,7 +245,7 @@ Step 3
 {{< /code >}}
 
 Step 4
-: Create a single page template to render each book review.
+: Create a single template to render each book review.
 
 {{< code file=layouts/books/single.html copy=true >}}
 {{ define "main" }}
@@ -342,7 +346,9 @@ content/
     └── the-hunchback-of-notre-dame.md
 ```
 
-If the content adapter also creates books/the-hunchback-of-notre-dame, the content of the published page is indeterminate. You can not define the rendering order. Avoid this content structure.
+If the content adapter also creates books/the-hunchback-of-notre-dame, the content of the published page is indeterminate. You can not define the processing order.
+
+To detect page collisions, use the `--printPathWarnings` flag when building your site.
 
 [content formats]: /content-management/formats/#classification
 [front matter field]: /content-management/front-matter/#fields

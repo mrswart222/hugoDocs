@@ -2,12 +2,12 @@
 title: Embedded templates
 description: Hugo provides embedded templates for common use cases.
 categories: [templates]
-keywords: [internal, analytics,]
+keywords: []
 menu:
   docs:
     parent: templates
-    weight: 190
-weight: 190
+    weight: 200
+weight: 200
 toc: true
 aliases: [/templates/internal]
 ---
@@ -55,40 +55,6 @@ You can also set the following in the front matter for a given piece of content:
 - `disqus_title`
 - `disqus_url`
 
-### Conditional loading of Disqus comments
-
-Users have noticed that enabling Disqus comments when running the Hugo web server on `localhost` (i.e. via `hugo server`) causes the creation of unwanted discussions on the associated Disqus account.
-
-You can create the following `layouts/partials/disqus.html`:
-
-{{< code file=layouts/partials/disqus.html >}}
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
-    // Don't ever inject Disqus on localhost--it creates unwanted
-    // discussions from 'localhost:1313' on your Disqus account...
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = '{{ .Site.Config.Services.Disqus.Shortname }}';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-{{< /code >}}
-
-The `if` statement skips the initialization of the Disqus comment injection when you are running on `localhost`.
-
-You can then render your custom Disqus partial template as follows:
-
-```go-html-template
-{{ partial "disqus.html" . }}
-```
-
 ## Google Analytics
 
 {{% note %}}
@@ -116,7 +82,7 @@ Provide your tracking ID in your configuration file:
 
 {{< code-toggle file=hugo >}}
 [services.googleAnalytics]
-ID = "G-MEASUREMENT_ID"
+id = "G-MEASUREMENT_ID"
 {{</ code-toggle >}}
 
 To use this value in your own template, access the configured ID with `{{ site.Config.Services.GoogleAnalytics.ID }}`.
@@ -169,7 +135,7 @@ tags = []
 
 Hugo uses the page title and description for the title and description metadata.
 The first 6 URLs from the `images` array are used for image metadata.
-If [page bundles](/content-management/page-bundles/) are used and the `images` array is empty or undefined, images with file names matching `*feature*` or `*cover*,*thumbnail*` are used for image metadata.
+If [page bundles](/content-management/page-bundles/) are used and the `images` array is empty or undefined, images with file names matching `*feature*`, `*cover*`, or `*thumbnail*` are used for image metadata.
 
 Various optional metadata can also be set:
 
@@ -223,7 +189,7 @@ To include the embedded template:
 
 ### Configure X (Twitter) Cards
 
-Hugo's X (Twitter) Card template is configured using a mix of configuration variables and [front-matter](/content-management/front-matter/) on individual pages.
+Hugo's X (Twitter) Card template is configured using a mix of configuration settings and [front-matter](/content-management/front-matter/) values on individual pages.
 
 {{< code-toggle file=hugo >}}
 [params]
@@ -237,7 +203,7 @@ description = "Text about this post"
 images = ["post-cover.png"]
 {{</ code-toggle >}}
 
-If `images` aren't specified in the page front-matter, then hugo searches for [image page resources](/content-management/image-processing/) with `feature`, `cover`, or `thumbnail` in their name.
+If [page bundles](/content-management/page-bundles/) are used and the `images` array is empty or undefined, images with file names matching `*feature*`, `*cover*`, or `*thumbnail*` are used for image metadata.
 If no image resources with those names are found, the images defined in the [site config](/getting-started/configuration/) are used instead.
 If no images are found at all, then an image-less Twitter `summary` card is used instead of `summary_large_image`.
 

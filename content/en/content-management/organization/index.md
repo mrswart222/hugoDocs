@@ -19,13 +19,28 @@ Hugo `0.32` announced page-relative images and other resources packaged into `Pa
 
 These terms are connected, and you also need to read about [Page Resources](/content-management/page-resources) and [Image Processing](/content-management/image-processing) to get the full picture.
 
-{{< imgproc "1-featured-content-bundles.png" "resize 300x" >}}
-The illustration shows three bundles. Note that the home page bundle cannot contain other content pages, although other files (images etc.) are allowed.
-{{< /imgproc >}}
+```text
+content/
+├── blog/
+│   ├── hugo-is-cool/
+│   │   ├── images/
+│   │   │   ├── funnier-cat.jpg
+│   │   │   └── funny-cat.jpg
+│   │   ├── cats-info.md
+│   │   └── index.md
+│   ├── posts/
+│   │   ├── post1.md
+│   │   └── post2.md
+│   ├── 1-landscape.jpg
+│   ├── 2-sunset.jpg
+│   ├── _index.md
+│   ├── content-1.md
+│   └── content-2.md
+├── 1-logo.png
+└── _index.md
+```
 
-{{% note %}}
-The bundle documentation is a **work in progress**. We will publish more comprehensive docs about this soon.
-{{% /note %}}
+The file tree above shows three bundles. Note that the home page bundle cannot contain other content pages, although other files (images etc.) are allowed.
 
 ## Organization of content source
 
@@ -56,13 +71,13 @@ The following demonstrates the relationships between your content organization a
 
 ### Index pages: `_index.md`
 
-`_index.md` has a special role in Hugo. It allows you to add front matter and content to your [list templates][lists]. These templates include those for [section templates], [taxonomy templates], [taxonomy terms templates], and your [homepage template].
+`_index.md` has a special role in Hugo. It allows you to add front matter and content to `home`, `section`, `taxonomy`, and `term` pages. 
 
 {{% note %}}
 **Tip:** You can get a reference to the content and metadata in `_index.md` using the [`.Site.GetPage` function](/methods/page/getpage).
 {{% /note %}}
 
-You can create one `_index.md` for your homepage and one in each of your content sections, taxonomies, and taxonomy terms. The following shows typical placement of an `_index.md` that would contain content and front matter for a `posts` section list page on a Hugo website:
+You can create one `_index.md` for your home page and one in each of your content sections, taxonomies, and terms. The following shows typical placement of an `_index.md` that would contain content and front matter for a `posts` section list page on a Hugo website:
 
 ```txt
 .         url
@@ -91,7 +106,7 @@ The [sections] can be nested as deeply as you want. The important thing to under
 
 ### Single pages in sections
 
-Single content files in each of your sections will be rendered as [single page templates][singles]. Here is an example of a single `post` within `posts`:
+Single content files in each of your sections will be rendered by a [single template]. Here is an example of a single `post` within `posts`:
 
 ```txt
                    path ("posts/my-first-hugo-post.md")
@@ -141,14 +156,7 @@ The `url` is the entire URL path, defined by the file path and optionally overri
 [formats]: /content-management/formats/
 [front matter]: /content-management/front-matter/
 [getpage]: /methods/page/getpage/
-[homepage template]: /templates/homepage/
-[homepage]: /templates/homepage/
-[lists]: /templates/lists/
 [pretty]: /content-management/urls/#appearance
-[section templates]: /templates/section-templates/
 [sections]: /content-management/sections/
-[singles]: /templates/single-page-templates/
-[taxonomy templates]: /templates/taxonomy-templates/
-[taxonomy terms templates]: /templates/taxonomy-templates/
-[types]: /content-management/types/
+[single template]: /templates/types/#single
 [urls]: /content-management/urls/

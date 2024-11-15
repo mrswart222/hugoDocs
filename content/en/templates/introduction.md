@@ -199,11 +199,11 @@ Remember that the piped value becomes the final argument to the function or meth
 You can split a template action over two or more lines. For example, these are equivalent:
 
 ```go-html-template
-{{ $v := or .Site.Language.LanguageName .Site.Language.Lang }}
+{{ $v := or $arg1 $arg2 }}
 
 {{ $v := or 
-  .Site.Language.LanguageName
-  .Site.Language.Lang
+  $arg1
+  $arg2
 }}
 ```
 
@@ -403,7 +403,7 @@ Use the [`template`] function to include one or more of Hugo's [embedded templat
 
 Use the [`partial`] or [`partialCached`] function to include one or more [partial templates]:
 
-[partial templates]: /templates/partials
+[partial templates]: /templates/partial
 
 ```go-html-template
 {{ partial "breadcrumbs.html" . }}
@@ -506,6 +506,20 @@ See documentation for [`with`], [`else`], and [`end`].
   {{ . }} → foo
 {{ else }}
   {{ print "var is falsy" }}
+{{ end }}
+```
+
+To test multiple conditions:
+
+```go-html-template
+{{ $v1 := 0 }}
+{{ $v2 := 42 }}
+{{ with $v1 }}
+  {{ . }}
+{{ else with $v2 }}
+  {{ . }} → 42
+{{ else }}
+  {{ print "v1 and v2 are falsy" }}
 {{ end }}
 ```
 

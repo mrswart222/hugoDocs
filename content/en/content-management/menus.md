@@ -100,7 +100,7 @@ This front matter menu entry demonstrates some of the available properties:
 
 {{< code-toggle file=content/products/software.md fm=true >}}
 title = 'Software'
-[[menus.main]]
+[menus.main]
 parent = 'Products'
 weight = 20
 pre = '<i class="fa-solid fa-code"></i>'
@@ -227,7 +227,7 @@ Hugo provides two methods to localize your menu entries. See [multilingual].
 See [menu templates].
 
 [localize]: /content-management/multilingual/#menus
-[menu templates]: /templates/menu-templates/
+[menu templates]: /templates/menu/
 [multilingual]: /content-management/multilingual/#menus
 [section]: /getting-started/glossary/#section
-[template]: /templates/menu-templates/
+[template]: /templates/menu/

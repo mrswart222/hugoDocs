@@ -104,7 +104,7 @@ A classification of content inferred from the top-level directory name or the `t
 
 ###### content view
 
-A template called with the `.Page.Render` method. See&nbsp;[details](/templates/views/).
+A template called with the `.Page.Render` method. See&nbsp;[details](/templates/content-view/).
 
 ###### context
 
@@ -131,7 +131,6 @@ To determine the current environment within a template, use the [`hugo.Environme
 ###### field
 
 A predefined key-value pair in front matter such as `date` or `title`. See&nbsp;also&nbsp;[parameter](#parameter).
-
 
 ###### flag
 
@@ -212,6 +211,10 @@ A directory that contains an index.md file and zero or more [resources](#resourc
 
 Any [page kind](#page-kind) that receives a page [collection](#collection) in [context](#context). This includes the home page, [section pages](#section-page), [taxonomy pages](#taxonomy-page), and [term pages](#term-page).
 
+###### list template
+
+Any template that renders a [list page](#list-page). This includes [home](/templates/types/#home), [section](/templates/types/#section), [taxonomy](/templates/types/#taxonomy), and [term](/templates/types/#term) templates.
+
 ###### localization
 
 Adaptation of a site to meet language and regional requirements. This includes translations, language-specific media, date and currency formats, etc. See&nbsp;[details](/content-management/multilingual/) and the [W3C definition](https://www.w3.org/International/questions/qa-i18n). Abbreviated l10n.
@@ -220,7 +223,7 @@ Adaptation of a site to meet language and regional requirements. This includes t
 
 {{< new-in 0.123.0 >}}
 
-A page or page resource identifier derived from the file path, excluding its extension and language identifier. This value is neither a file path nor a URL. Starting with a file path relative to the content directory, Hugo determines the logical path by stripping the file extension and language identifier, converting to lower case, then replacing spaces with hyphens. <!-- You may also set this value using the `path` front matter field. --> See [examples](/methods/page/path/#examples).
+A page or page resource identifier derived from the file path, excluding its extension and language identifier. This value is neither a file path nor a URL. Starting with a file path relative to the content directory, Hugo determines the logical path by stripping the file extension and language identifier, converting to lower case, then replacing spaces with hyphens. {{% comment %}}<!-- You may also set this value using the `path` front matter field. -->{{% /comment %}} See [examples](/methods/page/path/#examples).
 
 ###### map
 
@@ -256,7 +259,7 @@ A data structure with or without associated [methods](#method).
 
 ###### ordered taxonomy
 
-Created by invoking the [`Alphabetical`] or [`ByCount`] method on a [taxonomy object](#taxonomy-object), which is a [map](#map), an ordered taxonomy is a [slice](#slice), where each element is an object that contains the [term](#term) and a slice of its [weighted pages](#weighted-page).
+Created by invoking the [`Alphabetical`] or [`ByCount`] method on a [`Taxonomy`](#taxonomy-object) object, which is a [map](#map), an ordered taxonomy is a [slice](#slice), where each element is an object that contains the [term](#term) and a slice of its [weighted pages](#weighted-page).
 
 [`Alphabetical`]: /methods/taxonomy/alphabetical/
 [`ByCount`]: /methods/taxonomy/bycount/
@@ -271,11 +274,11 @@ A directory that encapsulates both content and associated [resources](#resource)
 
 ###### page collection
 
-A slice of page objects.
+A slice of `Page` objects.
 
 ###### page kind
 
-A classification of pages, one of `home`, `page`, `section`, `taxonomy`, or `term`. See&nbsp;[details](/templates/section-templates/#page-kinds).
+A classification of pages, one of `home`, `page`, `section`, `taxonomy`, or `term`. See&nbsp;[details](/methods/page/kind/).
 
 Note that there are also `RSS`, `sitemap`, `robotsTXT`, and `404` page kinds, but these are only available during the rendering of each of these respective page's kind and therefore *not* available in any of the `Pages` collections.
 
@@ -287,15 +290,19 @@ A file within a [page bundle](#page-bundle). Capture one or more page resources 
 
 ###### pager
 
-Created during [pagination](#pagination), a pager contains a subset of a section list, and navigation links to other pagers.
+Created during [pagination](#pagination), a pager contains a subset of a list page and navigation links to other pagers.
 
 ###### paginate
 
-To split a [section](#section) list into two or more [pagers](#pager) See&nbsp;[details](/templates/pagination/).
+To split a list page into two or more subsets.
 
 ###### pagination
 
-The process of [paginating](#paginate) a [section](#section) list.
+The process of [paginating](#paginate) a list page. See&nbsp;[details](/templates/pagination/).
+
+###### paginator
+
+A collection of [pagers](#pager).
 
 ###### parameter
 
@@ -394,7 +401,7 @@ Raw string literals are character sequences between backticks, as in \`bar\`. Wi
 
 ###### taxonomic weight
 
-Defined in front matter and unique to each taxonomy, this [weight](#weight) determines the sort order of page collections contained within a [taxonomy object](#taxonomy-object). See&nbsp;[details](/templates/taxonomy-templates/#assign-weight).
+Defined in front matter and unique to each taxonomy, this [weight](#weight) determines the sort order of page collections contained within a [`Taxonomy`](#taxonomy-object) object. See&nbsp;[details](/content-management/taxonomies/#order-taxonomies).
 
 ###### taxonomy
 
@@ -454,7 +461,7 @@ Used to position an element within a collection sorted by weight. Assign weights
 
 ###### weighted page
 
-Contained within a [taxonomy object](#taxonomy-object), a weighted page is a [map](#map) with two elements: a `Page` object, and its [taxonomic weight](#taxonomic-weight) as defined in front matter. Access the elements using the `Page` and `Weight` keys.
+Contained within a [`Taxonomy`](#taxonomy-object) object, a weighted page is a [map](#map) with two elements: a `Page` object, and its [taxonomic weight](#taxonomic-weight) as defined in front matter. Access the elements using the `Page` and `Weight` keys.
 
 ###### zero time
 

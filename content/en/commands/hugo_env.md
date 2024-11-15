@@ -5,11 +5,11 @@ url: /commands/hugo_env/
 ---
 ## hugo env
 
-Print Hugo version and environment info
+Display version and environment info
 
 ### Synopsis
 
-Print Hugo version and environment info. This is useful in Hugo bug reports
+Display version and environment info. This is useful in Hugo bug reports
 
 ```
 hugo env [flags] [args]
@@ -33,7 +33,7 @@ hugo env [flags] [args]
       --ignoreVendorPaths string   ignores any _vendor for module paths matching the given Glob pattern
       --logLevel string            log level (debug|info|warn|error)
       --quiet                      build in quiet mode
-      --renderToMemory             render to memory (mostly useful when running the server)
+  -M, --renderToMemory             render to memory (mostly useful when running the server)
   -s, --source string              filesystem path to read files relative from
       --themesDir string           filesystem path to themes directory
   -v, --verbose                    verbose output
@@ -41,5 +41,5 @@ hugo env [flags] [args]
 
 ### SEE ALSO
 
-* [hugo](/commands/hugo/)	 - hugo builds your site
+* [hugo](/commands/hugo/)	 - Build your site
 

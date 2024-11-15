@@ -5,7 +5,7 @@ url: /commands/hugo_server/
 ---
 ## hugo server
 
-A high performance webserver
+Start the embedded web server
 
 ### Synopsis
 
@@ -49,7 +49,7 @@ hugo server [command] [flags]
   -l, --layoutDir string         filesystem path to layout directory
       --liveReloadPort int       port for live reloading (i.e. 443 in HTTPS proxy situations) (default -1)
       --minify                   minify any supported output format (HTML, XML etc.)
-      --navigateToChanged        navigate to changed content file on live browser reload
+  -N, --navigateToChanged        navigate to changed content file on live browser reload
       --noBuildLock              don't create .hugo_build.lock file
       --noChmod                  don't sync permission mode of files
       --noHTTPCache              prevent HTTP caching
@@ -86,7 +86,7 @@ hugo server [command] [flags]
       --ignoreVendorPaths string   ignores any _vendor for module paths matching the given Glob pattern
       --logLevel string            log level (debug|info|warn|error)
       --quiet                      build in quiet mode
-      --renderToMemory             render to memory (mostly useful when running the server)
+  -M, --renderToMemory             render to memory (mostly useful when running the server)
   -s, --source string              filesystem path to read files relative from
       --themesDir string           filesystem path to themes directory
   -v, --verbose                    verbose output
@@ -94,6 +94,6 @@ hugo server [command] [flags]
 
 ### SEE ALSO
 
-* [hugo](/commands/hugo/)	 - hugo builds your site
+* [hugo](/commands/hugo/)	 - Build your site
 * [hugo server trust](/commands/hugo_server_trust/)	 - Install the local CA in the system trust store.
 
